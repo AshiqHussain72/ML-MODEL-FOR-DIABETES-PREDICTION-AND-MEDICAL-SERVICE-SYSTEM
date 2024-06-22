@@ -1,0 +1,42 @@
+{% load static %}
+<header>
+  <div class="my-nav">
+      <div class="container">
+          <div class="nav-items">
+              <div class="menu-toggle">
+                  <div class="menu-burger"></div>
+              </div>
+              <div class="logo">
+                 <a href="{% url 'diabetes:index' %}"> <img style="height: 50px;" src="{% static 'images/logo/headerlogo.png' %}"></a>
+                 
+              </div>
+              
+              <div class="menu-items">
+                  <div class="menu">
+                      <ul>
+                          <li><a href="{% url 'diabetes:index' %}">Home</a></li>
+                          <li><a href="{% url 'diabetes:blog' %}">Blog</a></li>
+                          {% if user.is_authenticated %}
+                          <li><a href="{% url 'diabetes:predict' %}">Predict</a></li>
+                          <li><a href="{% url 'diabetes:report' %}">History</a></li>
+                          
+                          
+                          <li><a href="{% url 'logout' %}">Logout</a></li>
+
+                          <li class="nav-item">
+                            <a class="nav-link" href="{% url 'profile' %}"><img src="{{ user.profile.image.url }}" width="50" height="35" class="d-inline-block rounded-circle"  alt="Profile"></a>
+                          </li>
+                          
+                          {% else %}
+                          <li><a href="{% url 'login' %}">Login</a></li>
+                          <li><a href="{% url 'register' %}">Register</a></li>
+                          {% endif %}
+                     
+
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>

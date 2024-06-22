@@ -1,0 +1,74 @@
+{% extends 'users/user_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col-sm-10 login-box">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 log-det">
+                        <div class="small-logo">
+                            <i class="fab fa-asymmetrik"></i> Diabetes Analysis
+                        </div>
+                        <h2>Welcome to Diabetes Prediction System</h2>
+                        <div align="center">
+                            <form action="result" >
+                              
+                                <table>
+                                    <tr>
+                                        <td>Pregnancies </td>
+                                        <td> <input type="text" name="pregnancies" style="margin-bottom: 10px;">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td> Gulcose </td>
+                                        <td> <input type="text" name="gulcose" style="margin-bottom: 10px;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Blood Pressure </td>
+                                        <td> <input type="text" name="blood_pressure" style="margin-bottom: 10px;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Skin Thikness </td>
+                                        <td> <input type="text" name="skin_thickness" style="margin-bottom: 10px;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Insuline </td>
+                                        <td> <input type="text" name="insuline" style="margin-bottom: 10px;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Body Mass Index </td>
+                                        <td> <input type="text" name="bmi" style="margin-bottom: 10px;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Diabetes Pedigree Function </td>
+                                        <td> <input type="text" name="diabetes_pedigree" style="margin-bottom: 10px;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Age </td>
+                                        <td> <input type="text" name="age" style="margin-bottom: 10px;">
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <input type="submit">
+                            </form>
+                            Result : {{result2}}
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

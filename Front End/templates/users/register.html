@@ -1,0 +1,57 @@
+{% extends 'users/user_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="container-fluid ">
+        <div class="container ">
+            <div class="row ">
+                
+                <div class="col-sm-10 login-box">
+                    <div class="row">
+                       <div class="col-lg-4 col-md-5 box-de">
+                           <div class="small-logo">
+                                <i class="fab fa-asymmetrik"></i> Diabetes Analysis
+                            </div>
+                            <div class="ditk-inf sup-oi">
+                                <h2 class="w-100">Already Have an Account </h2>
+                                <p>Simply login to your account by clicking the login Button to analyze your Diabetes condition</p>
+                                <a href="{% url 'login' %}">
+                                    <button type="button" class="btn btn-outline-light">SIGN IN</button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-7 log-det">
+                            
+                            <h2>Create New Account</h2>
+                           
+
+
+                            <div class="text-box-cont">
+                                <form action="" method = "POST">
+                                    {% csrf_token %}
+                                    
+                                    <!-- <div  class="form-group"> <label  class=" requiredField">
+                                        FirstName<span class="asteriskField">*</span> </label> <div> <input type="text" name="fname" maxlength="150" autofocus="" class="textinput textInput form-control" required="" "> </div> </div> -->
+
+                                    {{ form|crispy }}
+                               
+                           
+                               
+                                    <div class="input-group center sup mb-3">
+                                    <BUTTON class="btn btn-success btn-round" type="submit" >SIGN UP</BUTTON>
+                                   <a href="{% url 'diabetes:index' %}" class="btn btn-success btn-round">CANCEL</a>
+                                    </div>    
+                                </form>
+                            </div>
+                            
+
+
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}

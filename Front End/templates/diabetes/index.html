@@ -1,0 +1,347 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+           
+            <main>
+                <section class="slider">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            {% for object in obj %}
+                            <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+                                <div class="banner-content">
+                                    <h1>{{object.title}} <span>{{object.sub_title}}</span></h1>
+                                    <ol>
+                                        <li><a href="#diabetes">Diabetes</a></li>
+                                        <li><a href="#dps">DPS</a></li>
+                                        <li><a href="{% url 'diabetes:about' %}">About US</a></li>
+                                        
+                                    </ol>
+                                </div>
+                            <img style="height: 600px;" class="d-block w-100" src="{{object.image.url}}">
+                            </div>
+                            {% endfor %}
+                            
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-01" id="diabetes">
+                    <div class="container" >
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="heading">
+                                    <span>What Is Diabetes?</span>
+                                    <h2>Diabetes is a chronic (long-lasting) health condition that affects how your body turns food into energy.</h2>
+                                    <p class="text-center" >Your body breaks down most of the food you eat into sugar (glucose) and releases it into your bloodstream. When your blood sugar goes up, it signals your pancreas to release insulin. Insulin acts like a key to let the blood sugar into your body’s cells for use as energy.
+                                    With diabetes, your body doesn’t make enough insulin or can’t use it as well as it should. When there isn’t enough insulin or cells stop responding to insulin, too much blood sugar stays in your bloodstream. Over time, that can cause serious health problems, such as heart disease, vision loss, and kidney disease.</p>
+                                    </div>
+                            </div>
+
+                            <div id="type" class="col-12 heading">
+                            <a href="#type"><h2>Types of Diabetes</h2></a>
+                            </div>
+                            {% for obj in diabetes_type %}
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="wrapper">
+                                    <div class="icons">
+                                        <img style="width: 50px; height:50px;" src="{{ obj.image.url }}" alt="type 1 diabetes">
+                                    </div>
+                                    <div class="content w-100">
+                                        <h4>{{ obj.title }}</h4>
+                                        <p class="text-justify">{{ obj.description }} </p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+<br id="dps">
+                <section class="bg-02"  >
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="image">
+                                    <img src="{% static 'images/abt-img/1000-1000.jpg' %}">
+                                </div>
+                            </div>
+                            <div class="col-md-6" >
+                                <div class="heading">
+                                    <span>What is DPS??</span>
+                                    <h2>Diabetes Prediction System (DPS): </h2>
+                                    <p>DPS is a computerized process to predict user diabetic health using various factors like age, insulin, body mass index , gulcose and so on.</p>
+                                </div>
+
+                                <div class="wrapper">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="icon">
+                                                <i class="flaticon-archer"></i>
+                                                <h4>15</h4>
+                                                <h5>years of experience</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="icon">
+                                                <i class="flaticon-customer-satisfaction"></i>
+                                                <h4>
+                                                <div class="value" akhi="1000"></div></h4>
+                                                <h5>trusted clients</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="icon">
+                                                <i class="flaticon-video-call"></i>
+                                                <h4>8</h4>
+                                                <h5>Co-related Factors</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="icon">
+                                                <i class="flaticon-medal"></i>
+                                                <h4>99.99%</h4>
+                                                <h5>Highly Accurate</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <script>
+                   const counters = document.querySelectorAll('.value');
+                    const speed = 200;
+
+                    counters.forEach( counter => {
+                    const animate = () => {
+                        const value = +counter.getAttribute('akhi');
+                        const data = +counter.innerText;
+                        
+                        const time = value / speed;
+                        if(data < value) {
+                            counter.innerText = Math.ceil(data + time);
+                            setTimeout(animate, 200);
+                            }else{
+                            counter.innerText = value;
+                            }
+                        
+                    }
+                    
+                    animate();
+                    });
+
+                    </script>
+
+                <section class="bg-03">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="heading">
+                                    <span>Services</span>
+                                    <h2>we have take eight parameters to calculate and predict if the user is positive or negative to diabetes</h2>
+                                    <p>these parameters plays vital role on every patient diabetic status. </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6">
+                                <div class="wrapper">
+                                    <div class="content">
+                                        <i class="flaticon-flowchart"></i>
+                                        <h4>Pregnancies</h4>
+                                        <p class="text-justify"> Gestational diabetes develops in pregnant women who have never had diabetes. If you have gestational diabetes, your baby could be at higher risk for health problems. Gestational diabetes usually goes away after your baby is born but increases your risk for... <a href="#">see more</a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6">
+                                <div class="wrapper">
+                                    <div class="content">
+                                        <i class="flaticon-coding"></i>
+                                        <h4>Insuline</h4>
+                                        <p class="text-justify" >Natural insulin (i.e. insulin released from your pancreas) keeps your blood sugar in a very narrow range. Overnight and between meals, the normal, non-diabetic blood sugar ranges between 60-100mg/dl and 140 mg/dl or less after meals and snacks... <a href="#">see more</a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6">
+                                <div class="wrapper">
+                                    <div class="content">
+                                        <i class="flaticon-chess-pieces"></i>
+                                        <h4>Blood Pressure</h4>
+                                        <p class="text-justify" >Ideal blood pressure is considered to be between 90/60mmHg and 120/80mmHg. High blood pressure is considered to be 140/90mmHg or higher. Low blood pressure is considered to be 90/60mmHg or lower. People with high blood pressure usually have insulin resist... <a href="#">see more</a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6">
+                                <div class="wrapper">
+                                    <div class="content">
+                                        <i class="flaticon-research"></i>
+                                        <h4>Body Mass Index</h4>
+                                        <p class="text-justify" >Body Mass Index is a simple calculation using a person's height and weight. The formula is BMI = kg/m2 where kg is a person's weight in kilograms and m2 is their height in meters squared. A BMI of 25.0 or more is overweight, while the healthy range is 18.5 to 24.9. BMI applies to most adults 18-65 years... <a href="#">see more</a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6">
+                                <div class="wrapper">
+                                    <div class="content">
+                                        <i class="flaticon-optimization"></i>
+                                        <h4>Diabetes Pedigree</h4>
+                                        <p class="text-justify" >Diabetes pedigree function (a function which scores likelihood of diabetes based on family history). It provided some data on diabetes mellitus history in relatives and the genetic relationship of those relatives to the patient. This measure of genetic influence gave us an idea of the hereditary risk... <a href="#">see more</a></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6">
+                                <div class="wrapper">
+                                    <div class="content">
+                                        <i class="flaticon-market-research"></i>
+                                        <h4>Age Factor</h4>
+                                        <p class="text-justify" >
+                                            Skin thickness is affected by a number of factors, including age, gender and body mass index (BMI). Such data may be of importance when determining ideal techniques and sites for intradermal/subcutaneous injections and transdermal delivery systems. This is a particular issue in child... <a href="#">see more</a>
+                                            
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="wrapper">
+                                    <div class="content">
+                                        <i class="flaticon-market-research"></i>
+                                        <h4>Gulcose</h4>
+                                        <p class="text-justify" >A blood sugar level less than 140 mg/dL (7.8 mmol/L) is normal. A reading of more than 200 mg/dL (11.1 mmol/L) after two hours indicates diabetes. <a href="#">see more</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="wrapper">
+                                    <div class="content">
+                                        <i class="flaticon-market-research"></i>
+                                        <h4>Skin Thikness</h4>
+                                        <p class="text-justify" >
+                                            Type 1 diabetes usually appears during childhood or adolescence and Type 2 diabetes most often develops in people over age 45. <a href="#">see more</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="wrapper">
+                                    <div class="content">
+                                        <i class="flaticon-market-research"></i>
+                                        <h4>Report</h4>
+                                        <p class="text-justify">Diabetes Prediction System helps to analyze your diabetic health condition based on the various eight factor as mentioned here...<a href="#">see more</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="bg-04">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                
+                            </div>
+
+                            
+
+                
+
+                <section class="bg-06">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="heading">
+                                    <h2>Our News</h2>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                <article class="blog-sub">
+                                    <div class="blog-content">
+                                        <img src="{% static 'images/blog/1.jpg' %}">
+                                    </div>
+                                    <div class="blog-content-section">
+                                        <div class="blo-content-title">
+                                            <h4>The National Minimum Wage Is An Important Part</h4>
+                                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque at numquam, asperiores aut
+                                                praesentium
+                                                facilis ratione! Voluptatibus neque dignissimos ipsa atque veniam sint omnis in blanditiis, nemo
+                                                fugit
+                                                animi assumenda.</p>
+                                        </div>
+                                        <div class="blog-admin">
+                                            <ol>
+                                                <li><i class="fal fa-user-tie"></i> By Admin</li>
+                                                <li><i class="fal fa-calendar-alt"></i> july 28, 2023</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                <article class="blog-sub">
+                                    <div class="blog-content">
+                                        <img src="{% static 'images/blog/2.jpg' %}">
+                                    </div>
+                                    <div class="blog-content-section">
+                                        <div class="blo-content-title">
+                                            <h4>The National Minimum Wage Is An Important Part</h4>
+                                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque at numquam, asperiores aut
+                                                praesentium
+                                                facilis ratione! Voluptatibus neque dignissimos ipsa atque veniam sint omnis in blanditiis, nemo
+                                                fugit
+                                                animi assumenda.</p>
+                                        </div>
+                                        <div class="blog-admin">
+                                            <ol>
+                                                <li><i class="fal fa-user-tie"></i> By Admin</li>
+                                                <li><i class="fal fa-calendar-alt"></i> july 28, 2023</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                <article class="blog-sub">
+                                    <div class="blog-content">
+                                        <img src="{% static 'images/blog/3.jpg' %}">
+                                    </div>
+                                    <div class="blog-content-section">
+                                        <div class="blo-content-title">
+                                            <h4>The National Minimum Wage Is An Important Part</h4>
+                                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque at numquam, asperiores aut
+                                                praesentium
+                                                facilis ratione! Voluptatibus neque dignissimos ipsa atque veniam sint omnis in blanditiis, nemo
+                                                fugit
+                                                animi assumenda.</p>
+                                        </div>
+                                        <div class="blog-admin">
+                                            <ol>
+                                                <li><i class="fal fa-user-tie"></i> By Admin</li>
+                                                <li><i class="fal fa-calendar-alt"></i> july 28, 2023</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+ {% endblock content %}
+

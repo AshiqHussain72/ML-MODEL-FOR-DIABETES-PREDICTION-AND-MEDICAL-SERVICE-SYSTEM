@@ -1,0 +1,112 @@
+{% extends 'users/user_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="container-fluid ">
+        <div class="container ">
+            <div class="row ">
+                
+                <div class="col-sm-12 col-md-12 login-box" ><br>
+                <h2 style="text-align: center;">Diabetes Prediction Report 
+                  <form class="d-inline-flex float-left">
+                    <input class="form-control me-2" name="q" type="search" placeholder="Search Your Result(Positive, Negative , Age)" aria-label="Search">
+                    <button type="submit" class="btn btn-primary" style="
+                    margin-bottom: 20px;
+                " ><i class="bi bi-search"></i></button>
+        
+
+                  </form>
+                <button onclick="makePdf()" type="button" class="btn btn-primary float-right" style="
+                  margin-bottom: 20px;
+              " >Print</button>  </h2> 
+                  <table  id="report" class="table table-hover" border="1" >
+
+                    <thead>
+                      
+                      <tr class="table-active">
+                        <th scope="col">SN</th>
+                        
+                        <th scope="col">Date</th>
+                        <th scope="col">Pregnancies</th>
+                        <th scope="col">Gulcose</th>
+                        <th scope="col">BP</th>
+                        <th scope="col">Skin </th>
+                        <th scope="col">Insuline</th>
+                        <th scope="col">BMI</th>
+                        <th scope="col">Diabetes Pedigree</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Result</th>
+                        <th scope="col">Action</th>
+                        
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for object in obj %}
+                      <tr class="{% if object.result == 'Positive' %} table-danger {% else %} table-success {% endif %}">
+                        <th scope="row">{{forloop.counter}}</th>
+                       
+                        <td>{{object.date_posted}}</td>
+                        <td>{{object.pregnancies}}</td>
+                        <td>{{object.gulcose}}</td>
+                        <td>{{object.blood_pressure}}</td>
+                        <td>{{object.skin_thickness}}</td>
+                        <td>{{object.insuline}}</td>
+                        <td>{{object.bmi}}</td>
+                        <td>{{object.diabetes_pedigree}}</td>
+                        <td>{{object.age}}</td>
+                        <td>{{object.result}}</td>
+                        <td >
+                          <a href="{% url 'diabetes:predict_update' object.id%}"><i class="bi bi-pencil-square text-danger"></i></a>
+                          <a href="{% url 'diabetes:predict_delete' object.id %}"><i class="bi bi-trash-fill text-danger"></i></a>
+                         
+                      </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <!-- <form class="d-flex">
+            <input class="form-control me-2" name="q" type="search" placeholder="Search Your Result(Positive, Negative , Age)" aria-label="Search">
+            <button type="submit" class="btn btn-primary" style="
+            margin-bottom: 20px;
+        " >Search</button>
+          </form> -->
+        </div>
+        <div class="col">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination float-right">
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+<br>
+
+<script>
+  function makePdf(){
+    var printMe = document.getElementById('report');
+    var wme = window.open("","","width:700,height:900");
+    wme.document.write(printMe.outerHTML);
+    wme.document.close();
+    wme.focus();
+    wme.print();
+    wme.close();
+  }
+</script>
+    
+    {% endblock content %}
